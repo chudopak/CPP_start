@@ -53,7 +53,7 @@ std::string	Contact::getDarkestSecret(void) const {
 	return (_darkestSecret);
 }
 
-void	Contact::showContactInfo(void) const {
+void	Contact::showFullContactInfo(void) const {
 	if (!_contactExistance)
 		return ;
 	std::cout << "First Name - " << _firstName << std::endl;

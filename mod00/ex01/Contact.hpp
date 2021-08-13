@@ -32,7 +32,7 @@ public:
 	std::string	getPhoneNumber(void) const;
 	std::string	getDarkestSecret(void) const;
 
-	void		showContactInfo(void) const;
+	void		showFullContactInfo(void) const;
 };
 
 #endif
