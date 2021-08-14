@@ -37,14 +37,14 @@ void	PhoneBook::_showFullContactInfo(int index) const
 
 void	PhoneBook::serchContact(void)
 {
-	int		index;
-	std::string	forEnter;
+	int			index;
+	std::string	indexStr;
 
 	if (!_numberContacts)
 		return ;
 	std::cout << "Type contact index: ";
-	std::cin >> index;
-	std::getline(std::cin, forEnter);
+	std::getline(std::cin, indexStr);
+	index = std::atoi(indexStr.c_str());
 	if (!std::cin.fail() && 0 < index && index <= _numberContacts)
 		_showFullContactInfo(index - 1);
 	else
@@ -109,7 +109,7 @@ void	PhoneBook::addNewContact(void)
 	}
 	if (_numberContacts != _maxContactsInBook)
 		_numberContacts++;
-	if (_indexReplaceContact != _maxContactsInBook)
+	if (_indexReplaceContact != _maxContactsInBook - 1)
 		_indexReplaceContact++;
 	else
 		_indexReplaceContact = 0;
