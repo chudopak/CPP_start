@@ -1,14 +1,12 @@
-#ifndef CONTACT_H
-# define CONTACT_H
+#ifndef CONTACT_HPP
+# define CONTACT_HPP
 
 # include <iostream>
 # include <string>
 
 class	Contact
 {
-private:
-	bool		_contactExistance;
-
+protected:
 	std::string	_firstName;
 	std::string	_lastName;
 	std::string	_nickName;
@@ -18,21 +16,18 @@ private:
 public:
 	Contact(void);
 
-	void		setContactExistance(bool valueContactExistance);
 	void		setFirstName(std::string valueFirstName);
 	void		setLastName(std::string valueLastName);
 	void		setNickName(std::string valueNickName);
 	void		setPhoneNumber(std::string valuePhoneNumber);
 	void		setDarkestSecret(std::string valueDarkestSecret);
 
-	bool		getContactExistance(void) const;
 	std::string	getFirstName(void) const;
 	std::string	getLastName(void) const;
 	std::string	getNickName(void) const;
 	std::string	getPhoneNumber(void) const;
 	std::string	getDarkestSecret(void) const;
 
-	void		showFullContactInfo(void) const;
 };
 
 #endif

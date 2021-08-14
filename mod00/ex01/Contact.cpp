@@ -1,12 +1,11 @@
 #include "Contact.hpp"
 
 Contact::Contact(void) {
-	this->_contactExistance = false;
-	return ;
-}
-
-void	Contact::setContactExistance(bool valueContactExistance) {
-	this->_contactExistance = valueContactExistance;
+	_firstName = "";
+	_lastName = "";
+	_nickName = "";
+	_phoneNumber = "";
+	_darkestSecret = "";
 }
 
 void	Contact::setFirstName(std::string valueFirstName) {
@@ -29,10 +28,6 @@ void	Contact::setDarkestSecret(std::string valueDarkestSecret) {
 	this->_darkestSecret = valueDarkestSecret;
 }
 
-bool	Contact::getContactExistance(void) const {
-	return (_contactExistance);
-}
-
 std::string	Contact::getFirstName(void) const {
 	return (_firstName);
 }
@@ -51,14 +46,4 @@ std::string	Contact::getPhoneNumber(void) const {
 
 std::string	Contact::getDarkestSecret(void) const {
 	return (_darkestSecret);
-}
-
-void	Contact::showFullContactInfo(void) const {
-	if (!_contactExistance)
-		return ;
-	std::cout << "First Name - " << _firstName << std::endl;
-	std::cout << "Last Name - " << _lastName << std::endl;
-	std::cout << "Nickname - " << _nickName << std::endl;
-	std::cout << "Phone Number - " << _phoneNumber << std::endl;
-	std::cout << "Darkest Secret - " << _darkestSecret << std::endl;
 }
