@@ -37,12 +37,14 @@ void	PhoneBook::_showFullContactInfo(int index) const
 
 void	PhoneBook::serchContact(void)
 {
-	int	index;
+	int		index;
+	std::string	forEnter;
 
 	if (!_numberContacts)
 		return ;
 	std::cout << "Type contact index: ";
 	std::cin >> index;
+	std::getline(std::cin, forEnter);
 	if (!std::cin.fail() && 0 < index && index <= _numberContacts)
 		_showFullContactInfo(index - 1);
 	else
@@ -61,19 +63,20 @@ void	PhoneBook::showPreliminaryContactInfo(int contactIndex)
 
 void	PhoneBook::showContacts(void)
 {
-	std::cout << "____________________________________________" << std::endl;
-	if (!_numberContacts)
+	std::cout << "_____________________________________________" << std::endl;
+	if (!_numberContacts) {
 		std::cout << "|              Empty Phone Book            |" << std::endl;
-	else {
-		for (int i = 0; i < _numberContacts; i++)
+		std::cout << "---------------------------------------------" << std::endl;
+	} else {
+		for (int i = 0; i < _numberContacts; i++) {
 			showPreliminaryContactInfo(i);
+			std::cout << "---------------------------------------------" << std::endl;
+		}
 	}
-	std::cout << "--------------------------------------------" << std::endl;
 }
 
 void	PhoneBook::_setField(std::string info, int i)
 {
-	std::cout << i << std::endl;
 	if (i == 0)
 		this->contact[_indexReplaceContact].setFirstName(info);
 	else if (i == 1)
@@ -94,7 +97,6 @@ void	PhoneBook::addNewContact(void)
 		tmp = "";
 		std::cout << _fields[i] << ": ";
 		std::getline(std::cin, tmp);
-		//std::cout << tmp <<std::endl;
 		if (std::cin.eof())
 			exit(0);
 		else if (tmp.empty()) {
@@ -105,13 +107,10 @@ void	PhoneBook::addNewContact(void)
 			_setField(tmp, i);
 		}
 	}
-	std::cout << this->contact[_indexReplaceContact].getFirstName() << std::endl;
-	std::cout << this->contact[_indexReplaceContact].getLastName() << std::endl;
-	std::cout << this->contact[_indexReplaceContact].getNickName() << std::endl;
-	std::cout << this->contact[_indexReplaceContact].getPhoneNumber() << std::endl;
 	if (_numberContacts != _maxContactsInBook)
 		_numberContacts++;
-	_indexReplaceContact = (_indexReplaceContact % _maxContactsInBook) + 1;
-	std::cout << _numberContacts << std::endl;
-	std::cout << _indexReplaceContact << std::endl;
+	if (_indexReplaceContact != _maxContactsInBook)
+		_indexReplaceContact++;
+	else
+		_indexReplaceContact = 0;
 }

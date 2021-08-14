@@ -1,5 +1,11 @@
 #include <iostream>
-#include <cctype> 
+
+char	ft_toupper(char c)
+{
+	if ('a' <= c && c <= 'z')
+		return (c - 32);
+	return (c);
+}
 
 int		main(int ac, char **av)
 {
@@ -9,7 +15,7 @@ int		main(int ac, char **av)
 	{
 		for (int i = 1; i < ac; i++)
 			for (int j = 0; av[i][j]; j++)
-				std::cout << static_cast<char>(toupper(av[i][j]));
+				std::cout << ft_toupper(av[i][j]);
 		std::cout << std::endl;
 	}
 	return (0);

@@ -1,5 +1,5 @@
 NAME	= phoneBook
-FLAGS	= -Wall -Wextra -Werror
+FLAGS	= -Wall -Wextra -Werror -g
 SRC		= main.cpp Contact.cpp PhoneBook.cpp
 INC		= Contact.hpp PhoneBook.hpp
 OBJ		= $(SRC:.cpp=.o)

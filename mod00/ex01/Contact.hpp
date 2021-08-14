@@ -27,7 +27,6 @@ public:
 	std::string	getNickName(void) const;
 	std::string	getPhoneNumber(void) const;
 	std::string	getDarkestSecret(void) const;
-
 };
 
 #endif

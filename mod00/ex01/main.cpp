@@ -4,7 +4,7 @@ std::string	getCommand(void)
 {
 	std::string	command;
 
-	std::cout << "phonebook >";
+	std::cout << "phonebook > ";
 	std::getline(std::cin, command);
 	if (std::cin.eof())
 		exit(0);
@@ -13,10 +13,10 @@ std::string	getCommand(void)
 
 void	printInstruction(void)
 {
-	std::cout << "Instraction:" << std::endl;
+	std::cout << "Instraction:" << std::endl << std::endl;
 	std::cout << "ADD - create new contact" << std::endl;
 	std::cout << "SEARCH - shows all contacts & allow to chouse and see full contact info" << std::endl;
-	std::cout << "EXIT - exit program and delete all contacts" << std::endl;
+	std::cout << "EXIT - exit program and delete all contacts" << std::endl << std::endl;
 }
 
 int	main(void)
