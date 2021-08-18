@@ -24,6 +24,6 @@ re: fclean all
 test:
 	cat file2 && ./mySed file2 like HATE && echo && cat file2.replace
 	@echo
-	cat file && ./mySed file mod01 exersize && echo && cat file.replace
+	cat file && ./mySed file D DD && echo && cat file.replace
 
 .PHONY: re all clean fclean

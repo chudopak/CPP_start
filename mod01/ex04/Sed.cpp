@@ -37,14 +37,24 @@ std::string		Sed::reedFile(void) {
 }
 
 int		Sed::replace(std::string buff, std::string s1, std::string s2) {
-	size_t	index;
-	int		replacedItems = 0;
+	size_t		index;
+	size_t		checker;
+	std::string	s3;
+	int			s3_len = 0;
+	int			replacedItems = 0;
 
 	if (!_ifs.is_open() || !_ofs.is_open() || s1.empty() || s2.empty())
 		return (-1);
-	while ((index = buff.find(s1)) != std::string::npos) {
+	if ((checker = s2.find(s1)) != std::string::npos) {
+		s3 = s2;
+		s3.erase(checker, s1.length() + checker);
+		s3_len = s3.length();
+	}
+	index = buff.find(s1, 0);
+	while (index != std::string::npos) {
 		buff.erase(index, s1.length());
 		buff.insert(index, s2);
+		index = buff.find(s1, index + s3_len + 1);
 		replacedItems++;
 	}
 	_ofs << buff;
