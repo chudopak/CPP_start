@@ -31,8 +31,10 @@ int	main(int ac, char **av)
 	}
 	buff = sed.reedFile();
 	fileName = std::string(av[1]).append(".replace");
-	if (!sed.openOutputFile(fileName))
+	if (!sed.openOutputFile(fileName)) {
+		std::cout << "can't open file: " << fileName << std::endl;
 		return (1);
+	}
 	status = sed.replace(buff, static_cast<std::string>(av[2]),
 		static_cast<std::string>(av[3]));
 	if (status == -1)
