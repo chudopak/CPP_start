@@ -34,7 +34,7 @@ void	Karen::_error(void) {
 void	Karen::complain(std::string level)
 {
 	void			(Karen::*ptr)(void);
-	ComplainList	complainCase[4] = {
+	_ComplainList	complainCase[4] = {
 		{"DEBUG",	&Karen::_debug},
 		{"INFO",	&Karen::_info},
 		{"WARNING",	&Karen::_warning},
