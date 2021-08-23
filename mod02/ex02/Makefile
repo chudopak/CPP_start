@@ -1,4 +1,4 @@
-NAME	= orthodox
+NAME	= overload
 FLAGS	= -Wall -Wextra -Werror
 SRC		= main.cpp Fixed.cpp
 INC		= Fixed.hpp

@@ -33,10 +33,10 @@ public:
 	Fixed				operator++(int);
 	Fixed				operator--(int);
 
-	Fixed const &		min(Fixed const &a, Fixed const &b) const;
-	Fixed const &		max(Fixed const &a, Fixed const &b) const;
-	Fixed&				min(Fixed& a, Fixed& b) const;
-	Fixed&				max(Fixed& a, Fixed& b) const;
+	static Fixed const&	min(Fixed const &a, Fixed const &b);
+	static Fixed const&	max(Fixed const &a, Fixed const &b);
+	Fixed&				min(Fixed& a, Fixed& b);
+	Fixed&				max(Fixed& a, Fixed& b);
 
 
 	int					getRawBits(void) const;
@@ -46,6 +46,6 @@ public:
 
 };
 
-std::ostream& operator<<(std::ostream& out, Fixed const &nb);
+std::ostream&	operator<<(std::ostream& out, Fixed const &nb);
 
 #endif

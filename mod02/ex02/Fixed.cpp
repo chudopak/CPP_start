@@ -2,28 +2,20 @@
 
 const int	Fixed::_fractionalBits = 8;
 
-Fixed::Fixed(void) : _nb(0) {
-	std::cout << "Default constructor called" << std::endl;
-}
+Fixed::Fixed(void) : _nb(0) {}
 
 Fixed::Fixed(Fixed const &src) {
-	std::cout << "Copy constructor called" << std::endl;
 	_nb = src.getRawBits();
 }
 
 Fixed::Fixed(int const &nb) {
-	std::cout << "Int constructor called" << std::endl;
 	_nb = nb << _fractionalBits;
 }
 
 Fixed::Fixed(float const &nb) {
-	std::cout << "Float constructor called" << std::endl;
 	_nb = static_cast<int>(roundf(nb * (1 << _fractionalBits)));
 }
-Fixed::~Fixed(void) {
-	std::cout << "Default detructor called" << std::endl;
-}
-
+Fixed::~Fixed(void) {}
 
 int	Fixed::getRawBits(void) const {
 	return (_nb);
@@ -32,7 +24,6 @@ int	Fixed::getRawBits(void) const {
 void	Fixed::setRawBits(int const raw) {
 	_nb = raw;
 }
-
 
 float	Fixed::toFloat(void) const {
 	return (static_cast<float>(_nb) / static_cast<float>(1 << _fractionalBits));
@@ -43,7 +34,6 @@ int	Fixed::toInt(void) const {
 }
 
 Fixed&	Fixed::operator=(Fixed const &src) {
-	std::cout << "Assignation operator called" << std::endl;
 	_nb = src.getRawBits();
 	return (*this);
 }
@@ -73,19 +63,19 @@ bool	Fixed::operator>=(Fixed const &src) const {
 }
 
 Fixed	Fixed::operator+(Fixed const &src) const {
-	return Fixed(_nb + src.getRawBits());
+	return Fixed(toFloat() + src.toFloat());
 }
 
 Fixed	Fixed::operator-(Fixed const &src) const {
-	return Fixed(_nb - src.getRawBits());
+	return Fixed(toFloat() - src.toFloat());
 }
 
 Fixed	Fixed::operator*(Fixed const &src) const {
-	return Fixed(_nb * src.getRawBits());
+	return Fixed(toFloat() * src.toFloat());
 }
 
 Fixed	Fixed::operator/(Fixed const &src) const {
-	return Fixed(_nb / src.getRawBits());
+	return Fixed(toFloat() / src.toFloat());
 }
 
 Fixed&	Fixed::operator++(void) {
@@ -99,38 +89,38 @@ Fixed&	Fixed::operator--(void) {
 }
 
 Fixed	Fixed::operator++(int) {
-	Fixed	temp(_nb);
+	Fixed	temp(*this);
 
 	++(*this);
 	return (temp);
 }
 
 Fixed	Fixed::operator--(int) {
-	Fixed	temp(_nb);
+	Fixed	temp(*this);
 
 	--(*this);
 	return (temp);
 }
 
-Fixed const &	Fixed::min(Fixed const &a, Fixed const &b) const {
+Fixed const &	Fixed::min(Fixed const &a, Fixed const &b) {
 	if (a < b)
 		return (a);
 	return (b);
 }
 
-Fixed const &	Fixed::max(Fixed const &a, Fixed const &b) const {
+Fixed const &	Fixed::max(Fixed const &a, Fixed const &b) {
 	if (a < b)
 		return (b);
 	return (a);
 }
 
-Fixed&	Fixed::min(Fixed& a, Fixed& b) const {
+Fixed&	Fixed::min(Fixed& a, Fixed& b) {
 	if (a < b)
 		return (a);
 	return (b);
 }
 
-Fixed&	Fixed::max(Fixed& a, Fixed& b) const {
+Fixed&	Fixed::max(Fixed& a, Fixed& b) {
 	if (a < b)
 		return (b);
 	return (a);
