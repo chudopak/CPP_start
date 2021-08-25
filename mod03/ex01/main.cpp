@@ -10,7 +10,7 @@ int	main(void)
 
 	none.attack("Micky");
 	mick.takeDamage(none.getAttackDamage());
-	mick.beRepaired(3);
+	mick.beRepaired(13);
 
 	std::cout << none << std::endl;
 	std::cout << mick << std::endl;

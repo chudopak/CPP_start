@@ -2,9 +2,9 @@
 
 ClapTrap::ClapTrap(void) : _name("noName") {
 	std::cout << "Default constructor of ClapTrap class called" << std::endl;
-	_hitpoints		= 100;
-	_energyPoints	= 50;
-	_attackDamage	= 20;
+	_hitpoints		= 0;
+	_energyPoints	= 0;
+	_attackDamage	= 0;
 }
 
 ClapTrap::ClapTrap(ClapTrap const &src) {
@@ -14,9 +14,18 @@ ClapTrap::ClapTrap(ClapTrap const &src) {
 
 ClapTrap::ClapTrap(std::string const & name) : _name(name) {
 	std::cout << "Name constructor of ClapTrap class called" << std::endl;
-	_hitpoints		= 100;
-	_energyPoints	= 50;
-	_attackDamage	= 20;
+	_hitpoints		= 10;
+	_energyPoints	= 10;
+	_attackDamage	= 0;
+}
+
+ClapTrap::ClapTrap(std::string const &name, unsigned int hitpoints,
+			unsigned int energyPoints, unsigned int attackDamage) : _name(name)
+{
+	std::cout << "Full setup constructor of ClapTrap class called" << std::endl;
+	_hitpoints = hitpoints;
+	_energyPoints = energyPoints;
+	_attackDamage = attackDamage;
 }
 
 ClapTrap::~ClapTrap(void) {

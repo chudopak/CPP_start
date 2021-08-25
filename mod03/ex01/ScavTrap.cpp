@@ -1,15 +1,14 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(void) {
+ScavTrap::ScavTrap(void) : ClapTrap("noName", 100, 50, 20) {
 	std::cout << "DEFAULT constructor of ScavTrap class called" << std::endl;
 }
 
-ScavTrap::ScavTrap(ScavTrap const &src) {
+ScavTrap::ScavTrap(ScavTrap const &src) : ClapTrap(src) {
 	std::cout << "COPY constructor of ScavTrap class called" << std::endl;
-	*this = src;
 }
 
-ScavTrap::ScavTrap(std::string const &name) : ClapTrap(name) {
+ScavTrap::ScavTrap(std::string const &name) : ClapTrap(name, 100, 50, 20) {
 	std::cout << "NAME constructor of ScavTrap class called" << std::endl;
 }
 

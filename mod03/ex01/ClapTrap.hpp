@@ -14,6 +14,8 @@ protected:
 public:
 	ClapTrap(void);
 	ClapTrap(std::string const &name);
+	ClapTrap(std::string const &name, unsigned int hitpoints,
+			unsigned int energyPoints, unsigned int attackDamage);
 	ClapTrap(ClapTrap const &src);
 	~ClapTrap(void);
 
