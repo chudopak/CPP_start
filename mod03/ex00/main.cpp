@@ -3,17 +3,17 @@
 int	main(void)
 {
 	ClapTrap none;
-	ClapTrap numberOne("Micky");
+	ClapTrap mick("Micky");
 
 	std::cout << none << std::endl;
-	std::cout << numberOne << std::endl;
+	std::cout << mick << std::endl;
 
 	none.attack("Micky");
-	numberOne.takeDamage(none.getAttackDamage());
-	numberOne.beRepaired(3);
+	mick.takeDamage(none.getAttackDamage());
+	mick.beRepaired(3);
 
 	std::cout << none << std::endl;
-	std::cout << numberOne << std::endl;
+	std::cout << mick << std::endl;
 
 
 	std::cout << std::endl;
