@@ -18,14 +18,10 @@ int	main(void)
 
 	std::cout << std::endl;
 
+	mick.guardGate();
 
-	ScavTrap	a;
-	ScavTrap	b("Jimmy");
-
-	a.setEnergyPoints(100U);
-	std::cout << a << std::endl;
-	std::cout << b << std::endl;
-	b = a;
-	std::cout << b << std::endl;
+	std::cout << std::endl;
+	std::cout << "####################Destructors#####################" << std::endl;
+	std::cout << std::endl;
 	return (0);
 }
