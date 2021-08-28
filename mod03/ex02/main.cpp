@@ -12,6 +12,10 @@ int	main(void)
 	std::cout << stan << std::endl;
 	std::cout << bob << std::endl;
 
+	std::cout << copyStan << std::endl;
+	copyStan = o;
+	std::cout << copyStan << std::endl;
+
 	stan.beRepaired(100);
 	std::cout << stan << std::endl;
 	bob.attack("Stanly");
