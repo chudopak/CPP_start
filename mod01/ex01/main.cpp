@@ -5,7 +5,7 @@ int	main(void)
 	int		numberZombies = 10;
 	Zombie*	zombie;
 
-	zombie = zombieHorde(numberZombies, "Andy");
+	zombie = zombieHorde(numberZombies, "Dwight");
 	for (int i = 0; i < numberZombies; i++) {
 		zombie[i].announce();
 	}
