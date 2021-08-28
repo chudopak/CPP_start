@@ -1,5 +1,5 @@
 NAME	= DiamondTrap
-FLAGS	= -Wall -Wextra -Werror
+FLAGS	= -Wall -Wextra -Werror -Wshadow -Wno-shadow
 SRC		= main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
 INC		= ClapTrap.hpp ScavTrap.hpp FragTrap.hpp DiamondTrap.hpp
 OBJ		= $(SRC:.cpp=.o)
