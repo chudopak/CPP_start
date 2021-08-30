@@ -1,10 +1,10 @@
 #include "Cat.hpp"
 
-Cat::Cat(void) : Animal("Cat"), _brain(new Brain) {
+Cat::Cat(void) : Animal("Cat"), _brain(new Brain("let's go eat")) {
 	std::cout << "Cat: Deafolt constructor called" << std::endl;
 }
 
-Cat::Cat(Cat const &src) {
+Cat::Cat(Cat const &src) : _brain(new Brain()) {
 	std::cout << "Cat: Copy constructor called" << std::endl;
 	*this = src;
 }
@@ -24,4 +24,8 @@ Cat&	Cat::operator=(Cat const &src) {
 
 void	Cat::makeSound(void) const {
 	std::cout << _type << ": mauuuuuuu, ichi nica" << std::endl;
+}
+
+Brain&			Cat::getBrain(void) const {
+	return (*_brain);
 }
