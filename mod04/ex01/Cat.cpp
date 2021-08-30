@@ -16,7 +16,9 @@ Cat::~Cat(void) {
 
 Cat&	Cat::operator=(Cat const &src) {
 	std::cout << "Cat: Assignation constructor called" << std::endl;
+
 	_type = src.getType();
+	*_brain = *src._brain;
 	return (*this);
 }
 

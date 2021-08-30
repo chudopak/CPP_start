@@ -1,6 +1,5 @@
 #include "Cat.hpp"
 #include "Dog.hpp"
-#include "WrongCat.hpp"
 
 int		main(void)
 {
@@ -8,6 +7,8 @@ int		main(void)
 	std::cout << std::endl;
 	const Animal	*dog = new Dog();
 	std::cout << std::endl;
+
+	
 
 	delete cat;
 	std::cout << std::endl;

@@ -1,7 +1,7 @@
 NAME	= virtualDestructor
 FLAGS	= -Wall -Wextra -Werror
-SRC		= main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
-INC		= Animal.hpp Dog.hpp Cat.hpp WrongAnimal.hpp WrongCat.hpp Brain.hpp
+SRC		= main.cpp Animal.cpp Dog.cpp Cat.cpp Brain.cpp
+INC		= Animal.hpp Dog.hpp Cat.hpp Brain.hpp
 OBJ		= $(SRC:.cpp=.o)
 
 

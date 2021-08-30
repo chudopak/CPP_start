@@ -17,6 +17,7 @@ Dog::~Dog(void) {
 Dog&	Dog::operator=(Dog const &src) {
 	std::cout << "Dog: Assignation constructor called" << std::endl;
 	_type = src.getType();
+	*_brain = *src._brain;
 	return (*this);
 }
 
