@@ -29,7 +29,7 @@ void	MateriaSource::_copyInventory(AMateria* const inventory[]) {
 }
 
 void	MateriaSource::_setMaterialToInventorySlot(unsigned int const idx, AMateria* const inventory[]) {
-	if (_inventory[idx])
+	if (0 <= idx && idx < INVENTORY_SIZE && _inventory[idx])
 		_deleatMaterialFromInventory(idx);
 	this->_inventory[idx] = inventory[idx]->clone();
 }

@@ -7,9 +7,7 @@
 # include "MateriaSource.hpp"
 
 int	main(void)
-{
-	std::cout << "##### Subject tests #####" << std::endl;
-	
+{	
 	IMateriaSource* src = new MateriaSource();
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());
@@ -31,7 +29,6 @@ int	main(void)
 	delete src;
 	
 	std::cout << std::endl;
-	std::cout << "##### My tests #####" << std::endl;
 
 	IMateriaSource*	source = new MateriaSource();
 	AMateria*	m;
