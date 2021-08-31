@@ -45,6 +45,8 @@ void	MateriaSource::_setEmptyInventoty(void) {
 }
 
 void	MateriaSource::learnMateria(AMateria* m) {
+	if (!m)
+		return ;
 	for (unsigned int i = 0; i < INVENTORY_SIZE; i++) {
 		if (!_inventory[i]) {
 			_inventory[i] = m;
