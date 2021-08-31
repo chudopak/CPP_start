@@ -22,7 +22,6 @@ int		main(void)
 	std::cout << std::endl;
 
 	std::cout << "Cat first idea: " << catDeep->getBrain().getIdeas()[0] << std::endl;
-	std::cout << "Cat first ideas address: " << catDeep->getBrain().getIdeas() << std::endl;
 	std::cout << "Cat first idea address: " << &(catDeep->getBrain().getIdeas()[0]) << std::endl;
 	std::cout << "Cat second idea address: " << &(catDeep->getBrain().getIdeas()[1]) << std::endl;
 
@@ -31,9 +30,8 @@ int		main(void)
 	std::cout << std::endl;
 
 	std::cout << "Cat COPY first idea: " << catDeepCopy->getBrain().getIdeas()[0] << std::endl;
-	std::cout << "Cat first ideas address: " << catDeepCopy->getBrain().getIdeas() << std::endl;
-	std::cout << "Cat first idea address: " << &(catDeepCopy->getBrain().getIdeas()[0]) << std::endl;
-	std::cout << "Cat second idea address: " << &(catDeepCopy->getBrain().getIdeas()[1]) << std::endl;
+	std::cout << "Cat COPY first idea address: " << &(catDeepCopy->getBrain().getIdeas()[0]) << std::endl;
+	std::cout << "Cat COPY second idea address: " << &(catDeepCopy->getBrain().getIdeas()[1]) << std::endl;
 
 	std::cout << std::endl;
 

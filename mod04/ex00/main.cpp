@@ -2,6 +2,10 @@
 #include "Dog.hpp"
 #include "WrongCat.hpp"
 
+void	makeSomeNoise(const Animal *an) {
+	an->makeSound();
+}
+
 int		main(void)
 {
 	const Animal	*cat = new Cat();
@@ -13,9 +17,10 @@ int		main(void)
 	const Animal	*none = new Animal();
 	std::cout << std::endl;
 
-	cat->makeSound();
-	dog->makeSound();
-	none->makeSound();
+	makeSomeNoise(cat);
+	makeSomeNoise(dog);
+	makeSomeNoise(none);
+
 	std::cout << std::endl;
 
 	delete cat;
