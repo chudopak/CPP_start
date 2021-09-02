@@ -3,6 +3,8 @@
 
 # include "Bureaucrat.hpp"
 
+class Bureaucrat;
+
 class Form
 {
 private:
@@ -24,33 +26,27 @@ public:
 	int					getSignGrade(void) const;
 	int					getExecuteGrade(void) const;
 
+	void				beSigned(Bureaucrat const &src);
+
 	class GradeTooHighException : public std::exception
 	{
-	private:
-		bool	_isSignSuccesfull;
-		bool	_unexictantSignGrade;
-		bool	_unexictantExecuteGrade;
-
 	public:
-		GradeTooHighException(void);
-		GradeTooHighException(bool isSignSuccesfull, bool unexictantSignGrade, bool unexictantExecuteGrade);
 		virtual const char *	what(void) const throw();
 	};
 
 	class GradeTooLowException : public std::exception
 	{
-	private:
-		bool	_isSignSuccesfull;
-		bool	_unexictantSignGrade;
-		bool	_unexictantExecuteGrade;
-
 	public:
-		GradeTooLowException(void);
-		GradeTooLowException(bool isSignSuccesfull, bool unexictantSignGrade, bool unexictantExecuteGrade);
 		virtual const char *	what(void) const throw();
 	};
 
-	void				beSigned(Bureaucrat const &src);
+	class FormAlreadySignedExeption : public std::exception
+	{
+	public:
+		virtual const char *	what(void) const throw();
+	};
 };
+
+std::ostream &	operator<<(std::ostream &o, Form const &src);
 
 #endif

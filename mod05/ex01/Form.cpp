@@ -7,8 +7,19 @@ Form::Form(void) : _name("Untitled"), _signGrade(150), _executeGrade(150) {
 Form::Form(std::string const & name, int signGrade, int executeGrade) 
 			: _name(name), _signGrade(signGrade), _executeGrade(executeGrade) {
 	_signStatus = false;
-
+	if (_signGrade < 1 || _executeGrade < 1)
+		throw Form::GradeTooHighException();
+	if (_signGrade > 150 || _executeGrade > 150)
+		throw Form::GradeTooLowException();
 }
+
+Form::Form(Form const & src) : _name(src.getName()),
+			_signGrade(src.getSignGrade()), _executeGrade(src.getExecuteGrade())
+{
+	_signStatus = src.getSignStatus();
+}
+
+Form::~Form(void) {}
 
 Form&	Form::operator=(Form const & src) {
 	(void)src;
@@ -31,35 +42,37 @@ int		Form::getExecuteGrade(void) const {
 	return (_executeGrade);
 }
 
+void	Form::beSigned(Bureaucrat const &src) {
+	if (src.getGrade() > _signGrade)
+		throw Form::GradeTooLowException();
+	if (_signStatus == true)
+		throw Form::FormAlreadySignedExeption();
+	_signStatus = true;
+}
+
 /*
 ** exception classes methods implimentation
 */
 
-Form::GradeTooLowException::GradeTooLowException(bool isSignSuccesfull,
-		bool unexictantSignGrade, bool unexictantExecuteGrade)
-{
-	_isSignSuccesfull = isSignSuccesfull;
-	_unexictantExecuteGrade = unexictantExecuteGrade;
-	_unexictantSignGrade = unexictantSignGrade;
-}
-
-
-Form::GradeTooHighException::GradeTooHighException(void) {
-	_isSignSuccesfull 		= false;
-	_unexictantExecuteGrade	= false;
-	_unexictantSignGrade	= false;
-}
-
-Form::GradeTooHighException::GradeTooHighException(bool isSignSuccesfull,
-		bool unexictantSignGrade, bool unexictantExecuteGrade)
-{
-	_isSignSuccesfull = isSignSuccesfull;
-	_unexictantExecuteGrade = unexictantExecuteGrade;
-	_unexictantSignGrade = unexictantSignGrade;
+const char *	Form::GradeTooLowException::what(void) const throw() {
+	return ("Grade is to low");
 }
 
 const char *	Form::GradeTooHighException::what(void) const throw() {
+	return ("Grade is to hight");
+}
 
-	if (_isSignSuccesfull)
-		return ("Form already signed");
+const char *	Form::FormAlreadySignedExeption::what(void) const throw () {
+	return ("Form already signed");
+}
+
+std::ostream &	operator<<(std::ostream &o, Form const &src) {
+	o << "Form - " << src.getName() << " info:" << std::endl;
+	if (src.getSignStatus())
+		o << "Sign status: Signed" << std::endl;
+	else
+		o << "Sign status: not Signed" << std::endl;
+	o << "Sign grade: " << src.getSignGrade() << std::endl;
+	o << "Execute grade: " << src.getExecuteGrade() << std::endl;
+	return (o);
 }

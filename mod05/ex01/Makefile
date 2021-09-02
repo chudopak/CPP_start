@@ -1,7 +1,7 @@
-NAME	= bureaucrat
+NAME	= forms
 FLAGS	= -Wall -Wextra -Werror
-SRC		= main.cpp Bureaucrat.cpp
-INC		= Bureaucrat.hpp
+SRC		= main.cpp Bureaucrat.cpp Form.cpp
+INC		= Bureaucrat.hpp Form.hpp
 OBJ		= $(SRC:.cpp=.o)
 
 
