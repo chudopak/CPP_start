@@ -21,7 +21,8 @@ void	TypeIdentifier::isArgumentExist(int const ac) const throw(std::exception) {
 }
 
 void	TypeIdentifier::isArgumentMatchAnyType(char const * arg) const throw(std::exception) {
-	if (!isInt(arg) && !isChar(arg) && !isFloat(arg) && !isDouble(arg))
+	if (!isInt(arg) && !isChar(arg) && !isFloat(arg) && !isDouble(arg)
+			&& !isNan(static_cast<std::string>(arg)) && !isInf(static_cast<std::string>(arg)))
 		throw ExistTypeToConvertNotFoundException();
 }
 
@@ -45,6 +46,9 @@ bool	TypeIdentifier::isInt(char const *arg) const {
 bool	TypeIdentifier::isFloat(char const *arg) const {
 	char	*lineResidual;
 
+	strtol(arg, &lineResidual, 10);
+	if (*lineResidual != '.' || !('0' <= *(lineResidual + 1) && *(lineResidual + 1) <='9'))
+		return(false);
 	strtod(arg, &lineResidual);
 	if (lineResidual[0] == 'f' && !lineResidual[1])
 		return (true);
@@ -54,6 +58,9 @@ bool	TypeIdentifier::isFloat(char const *arg) const {
 bool	TypeIdentifier::isDouble(char const *arg) const {
 	char	*lineResidual;
 
+	strtol(arg, &lineResidual, 10);
+	if (*lineResidual != '.' || !('0' <= *(lineResidual + 1) && *(lineResidual + 1) <='9'))
+		return(false);
 	strtod(arg, &lineResidual);
 	if (*lineResidual)
 		return (false);
@@ -61,7 +68,7 @@ bool	TypeIdentifier::isDouble(char const *arg) const {
 }
 
 bool	TypeIdentifier::isNan(std::string const & arg) const {
-	if (arg == "nanf" || arg == "nan")
+	if (arg == "nanf" || arg == "nan" || arg == "-nan" || arg == "-nanf")
 		return (true);
 	return (false);
 }
