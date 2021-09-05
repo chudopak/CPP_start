@@ -15,6 +15,12 @@ TypeIdentifier&	TypeIdentifier::operator=(TypeIdentifier const &src)
 	return (*this);
 }
 
+void	TypeIdentifier::isArgumentExist(int ac) const throw(NotEnoughArgumentsException()) {
+	if (ac != 2)
+		throw TypeIdentifier::Exceptions::NotEnoughArgumentsException();
+}
+
+
 bool	TypeIdentifier::isChar(char const *arg) const {
 	std::string	argStr = static_cast<std::string>(arg);
 

@@ -2,9 +2,10 @@
 # define TYPEIDENTIFIER_HPP
 
 # include <iostream>
+# include "Exception.hpp"
 
 
-class TypeIdentifier
+class TypeIdentifier : public Exceptions
 {
 protected:
 	TypeIdentifier(void);
@@ -21,6 +22,7 @@ public:
 	bool			isInt(char const *arg) const;
 	bool			isNan(std::string const &literal);
 	bool			isInf(std::string const &literal);
+	void			isArgumentExist(int ac) const throw(NotEnoughArgumentsException());
 };
 
 #endif

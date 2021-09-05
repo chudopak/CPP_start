@@ -1,7 +1,7 @@
 NAME	= staticCast
 FLAGS	= -Wall -Wextra -Werror
-SRC		= main.cpp
-INC		= 
+SRC		= main.cpp TypeIdentifier.cpp TypeConvert.cpp InputArguments.cpp
+INC		= TypeIdentifier.hpp TypeConvert.hpp Exception.hpp InputArguments.hpp
 OBJ		= $(SRC:.cpp=.o)
 
 

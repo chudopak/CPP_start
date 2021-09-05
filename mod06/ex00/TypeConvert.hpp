@@ -18,9 +18,9 @@ public:
 	TypeConvert(TypeConvert const &src);
 	~TypeConvert(void);
 
-	TypeConvert&		operator=(TypeConvert const &src);
+	//TypeConvert&		operator=(TypeConvert const &src);
 
-	void				convertToInt(char const *arg);
+	//void				convertToInt(char const *arg);
 };
 
 #endif

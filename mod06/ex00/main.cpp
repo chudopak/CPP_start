@@ -1,17 +1,31 @@
 #include <iostream>
 #include "TypeConvert.hpp"
+#include "InputArguments.hpp"
 
-bool	convertToRequestType(char *arg)
+bool	validateArg(TypeConvert	& convertedTypes, InputArguments & inputArguments) {
+	try {
+		convertedTypes.isArgumentExist(inputArguments.getAmountArguments());
+		return (true);
+	} catch (std::exception & e) {
+		std::cout << "Error catched: " << e.what() << std::endl;
+	}
+	return (false);
+}
+
+bool	convertToRequestTypes(InputArguments & inputArguments)
 {
-	if ()
-		;
+	TypeConvert	convertedTypes;
+
+	if (validateArg(convertedTypes, inputArguments)) {
+		std::cout << "All ok" << std::endl;
+	}
+	return (false);
 }
 
 int		main(int ac, char **av)
 {
-	if (ac != 2)
-		std::cout << "There must be one scalar type: <char> <int> <double> <float>" << std::endl;
-	if (!convertToRequestType(av[1]))
+	InputArguments	inputArguments(ac, av);
+	if (!convertToRequestTypes(inputArguments))
 		return (1);
 	return (0);
 }
