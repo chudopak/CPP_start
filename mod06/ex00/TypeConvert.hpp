@@ -8,19 +8,16 @@
 class TypeConvert : public TypeIdentifier
 {
 private:
-	char			_ch;
-	int				_nbInt;
-	float			_nbFloat;
-	double			_nbDouble;
+	TypeConvert(TypeConvert const &src);
+	TypeConvert&	operator=(TypeConvert const &src);
 
 public:
 	TypeConvert(void);
-	TypeConvert(TypeConvert const &src);
 	~TypeConvert(void);
 
-	//TypeConvert&		operator=(TypeConvert const &src);
-
-	//void				convertToInt(char const *arg);
+	void			printConvertionFromInt(char const *arg);
+	void			printConvertionFromChar(char const *arg);
+	void			printConvertionResult(char const *arg);
 };
 
 #endif

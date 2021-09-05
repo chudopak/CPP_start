@@ -2,9 +2,10 @@
 #include "TypeConvert.hpp"
 #include "InputArguments.hpp"
 
-bool	validateArg(TypeConvert	& convertedTypes, InputArguments & inputArguments) {
+bool	validateInputArguments(TypeConvert	& convertedTypes, InputArguments & inputArguments) {
 	try {
 		convertedTypes.isArgumentExist(inputArguments.getAmountArguments());
+		convertedTypes.isArgumentMatchAnyType(inputArguments.getArgumentToConvert()[1]);
 		return (true);
 	} catch (std::exception & e) {
 		std::cout << "Error catched: " << e.what() << std::endl;
@@ -16,8 +17,9 @@ bool	convertToRequestTypes(InputArguments & inputArguments)
 {
 	TypeConvert	convertedTypes;
 
-	if (validateArg(convertedTypes, inputArguments)) {
-		std::cout << "All ok" << std::endl;
+	if (validateInputArguments(convertedTypes, inputArguments)) {
+		convertedTypes.printConvertionResult(inputArguments.getArgumentToConvert()[1]);
+		return (true);
 	}
 	return (false);
 }
