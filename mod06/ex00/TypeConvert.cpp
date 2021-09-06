@@ -52,25 +52,7 @@ void	TypeConvert::printConvertionFromChar(char const *arg) {
 	std::cout << "double: " << static_cast<double>(ch) << ".0" << std::endl;
 }
 
-bool	TypeConvert::_includeFloatIdentifier(int dotPosition, char const *arg) {
-	int		i = dotPosition + 1;
-	int		significantNumbersAfterDot;
-
-	if (arg[0] == '-')
-		significantNumbersAfterDot = 8;
-	else
-		significantNumbersAfterDot = 7;
-	while (i < significantNumbersAfterDot && arg[i] == '0') {
-		i++;
-	}
-	if (arg[i] == 'f')
-		return (true);
-	if (i == significantNumbersAfterDot && '0' <= arg[i] && arg[i] <= '4')
-		return (true);
-	return (false);
-}
-
-bool	TypeConvert::_includeDoubleIdentifier(int dotPosition, char const *arg) {
+bool	TypeConvert::_includeIdentifier(int dotPosition, char const *arg) {
 	int		i = dotPosition + 1;
 	int		significantNumbersAfterDot;
 
@@ -81,7 +63,7 @@ bool	TypeConvert::_includeDoubleIdentifier(int dotPosition, char const *arg) {
 	while (arg[i] && i < significantNumbersAfterDot && arg[i] == '0') {
 		i++;
 	}
-	if (!arg[i])
+	if (!arg[i] || arg[i] == 'f')
 		return (true);
 	if (i == significantNumbersAfterDot && '0' <= arg[i] && arg[i] <= '5')
 		return (true);
@@ -95,7 +77,7 @@ void	TypeConvert::printFloat(double nb, char const *arg) {
 	if (dotPosition > 6) {
 		std::cout << "float: " << static_cast<float>(nb) << "f" << std::endl;
 	} else {
-		if (_includeFloatIdentifier(dotPosition, arg))
+		if (_includeIdentifier(dotPosition, arg))
 			std::cout << "float: " << static_cast<float>(nb) << ".0f" << std::endl;
 		else
 			std::cout << "float: " << static_cast<float>(nb) << "f" << std::endl;
@@ -109,14 +91,14 @@ void	TypeConvert::printDouble(double nb, char const *arg) {
 	if (dotPosition > 6) {
 		std::cout << "double: " << nb << std::endl;
 	} else {
-		if (_includeDoubleIdentifier(dotPosition, arg))
+		if (_includeIdentifier(dotPosition, arg))
 			std::cout << "double: " << nb << ".0" << std::endl;
 		else
 			std::cout << "double: " << nb << std::endl;
 	}
 }
 
-void	TypeConvert::printConvertionFromFloatAndDouble(char const *arg) {
+void	TypeConvert::printConvertionFromFloatOrDouble(char const *arg) {
 	double		nb = strtod(arg, NULL);
 
 	if (isInf(static_cast<std::string>(arg)) || isNan(static_cast<std::string>(arg))) {
@@ -141,5 +123,5 @@ void	TypeConvert::printConvertionResult(char const *arg) {
 	else if (isInt(arg))
 		printConvertionFromInt(arg);
 	else
-		printConvertionFromFloatAndDouble(arg);
+		printConvertionFromFloatOrDouble(arg);
 }

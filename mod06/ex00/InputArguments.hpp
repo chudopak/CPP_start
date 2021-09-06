@@ -2,12 +2,14 @@
 # define INPUTARGUMENTS_HPP
 
 # include <iostream>
+#include "Exception.hpp"
 
-class InputArguments
+class InputArguments : public Exceptions
 {
 private:
 	int		_amountArguments;
-	char**	_argumentToConvert;
+	char**	_arguments;
+	char*	_argumentToConvert;
 
 	InputArguments(void);
 	InputArguments(InputArguments const &src);
@@ -17,7 +19,8 @@ public:
 	~InputArguments(void);
 
 	int		getAmountArguments(void) const;
-	char**	getArgumentToConvert(void) const;
+	char*	getArgumentToConvert(void) const;
+	void	beautifyArgumentForConvertion(void) throw(std::exception);
 };
 
 

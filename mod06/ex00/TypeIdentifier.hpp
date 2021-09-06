@@ -25,6 +25,7 @@ public:
 	bool			isInt(char const *arg) const;
 	bool			isNan(std::string const &literal) const;
 	bool			isInf(std::string const &literal) const;
+	bool			isArgumentStartsWithDot(char const *arg) const;
 
 	void			isArgumentExist(int const ac) const throw(std::exception);
 	void			isArgumentMatchAnyType(char const * arg) const throw(std::exception);

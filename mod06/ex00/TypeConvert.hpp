@@ -12,8 +12,7 @@ private:
 	TypeConvert(TypeConvert const &src);
 	TypeConvert&	operator=(TypeConvert const &src);
 
-	bool			_includeFloatIdentifier(int dotPosition, char const *arg);
-	bool			_includeDoubleIdentifier(int dotPosition, char const *arg);
+	bool			_includeIdentifier(int dotPosition, char const *arg);
 public:
 	TypeConvert(void);
 	~TypeConvert(void);
@@ -23,7 +22,7 @@ public:
 
 	void			printConvertionFromInt(char const *arg);
 	void			printConvertionFromChar(char const *arg);
-	void			printConvertionFromFloatAndDouble(char const *arg);
+	void			printConvertionFromFloatOrDouble(char const *arg);
 	void			printConvertionResult(char const *arg);
 };
 

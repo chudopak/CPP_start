@@ -5,7 +5,7 @@
 bool	validateInputArguments(TypeConvert	& convertedTypes, InputArguments & inputArguments) {
 	try {
 		convertedTypes.isArgumentExist(inputArguments.getAmountArguments());
-		convertedTypes.isArgumentMatchAnyType(inputArguments.getArgumentToConvert()[1]);
+		convertedTypes.isArgumentMatchAnyType(inputArguments.getArgumentToConvert());
 		return (true);
 	} catch (std::exception & e) {
 		std::cout << "Error catched: " << e.what() << std::endl;
@@ -18,7 +18,8 @@ bool	convertToRequestTypes(InputArguments & inputArguments)
 	TypeConvert	convertedTypes;
 
 	if (validateInputArguments(convertedTypes, inputArguments)) {
-		convertedTypes.printConvertionResult(inputArguments.getArgumentToConvert()[1]);
+		inputArguments.beautifyArgumentForConvertion();
+		convertedTypes.printConvertionResult(inputArguments.getArgumentToConvert());
 		return (true);
 	}
 	return (false);

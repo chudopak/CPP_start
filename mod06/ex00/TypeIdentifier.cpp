@@ -21,9 +21,23 @@ void	TypeIdentifier::isArgumentExist(int const ac) const throw(std::exception) {
 }
 
 void	TypeIdentifier::isArgumentMatchAnyType(char const * arg) const throw(std::exception) {
+	if (!isArgumentStartsWithDot(arg))
+		throw ExistTypeToConvertNotFoundException();
 	if (!isInt(arg) && !isChar(arg) && !isFloat(arg) && !isDouble(arg)
 			&& !isNan(static_cast<std::string>(arg)) && !isInf(static_cast<std::string>(arg)))
 		throw ExistTypeToConvertNotFoundException();
+}
+
+bool	TypeIdentifier::isArgumentStartsWithDot(char const *arg) const {
+	int		i = 0;
+
+	if (arg[0] == '.' && !arg[1])
+		return (true);
+	while (arg[i] && arg[i] == ' ')
+		i++;
+	if (arg[i] == '.')
+		return (false);
+	return (true);
 }
 
 bool	TypeIdentifier::isChar(char const *arg) const {
