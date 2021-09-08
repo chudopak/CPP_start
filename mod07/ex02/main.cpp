@@ -27,6 +27,34 @@ int		main(void)
 	}
 	std::cout << "]" << std::endl;
 
+	std::cout << "Changing first element in array" << std::endl;
+
+	test_int[0] = 1023;
+	std::cout << "[";
+	for (unsigned int i = 0; i < test_int.size(); i++) {
+		std::cout << test_int[i];
+		if (i + 1 != test_int.size())
+			std::cout << ",";
+	}
+	std::cout << "]" << std::endl;
+
+	std::cout << "Assign arrays of int's" << std::endl;
+
+	Array<int> test_copy_int(TEST_SIZE);
+	srand(time(NULL));
+	for (int i = 0; i < TEST_SIZE; i++) {
+		int	random = rand() % 100;
+		test_copy_int[i] = random;
+	}
+	test_copy_int = test_int;
+	std::cout << "[";
+	for (unsigned int i = 0; i < test_int.size(); i++) {
+		std::cout << test_int[i];
+		if (i + 1 != test_int.size())
+			std::cout << ",";
+	}
+	std::cout << "]" << std::endl;
+
 	std::cout << std::endl;
 
 	std::cout << "Create array of TestClass" << std::endl;
