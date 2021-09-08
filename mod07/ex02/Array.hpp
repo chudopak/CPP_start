@@ -36,7 +36,7 @@ public:
 template<typename T>
 Array<T>::Array(void) {
 	_size	= 0;
-	_array	= nullptr;
+	_array	= NULL;
 }
 
 template<typename T>
@@ -45,7 +45,7 @@ Array<T>::Array(unsigned int n) {
 	if (_size)
 		_array = new T[_size];
 	else
-		_array = nullptr;
+		_array = NULL;
 }
 
 template<typename T>
@@ -69,8 +69,10 @@ void Array<T>::_copyArray(Array<T> const &src) {
 template<typename T>
 Array<T>&	Array<T>::operator=(Array<T> const &src) {
 
-	if (_size == src.size())
+	if (_size == src.size()) {
 		_copyArray(src);
+		return (*this);
+	}
 	else if (_size)
 		freeArray();
 
@@ -79,7 +81,7 @@ Array<T>&	Array<T>::operator=(Array<T> const &src) {
 		_array = new T[_size];
 		_copyArray(src);
 	} else {
-		_array = nullptr;
+		_array = NULL;
 	}
 	return (*this);
 }
@@ -100,7 +102,7 @@ template<typename T>
 void	Array<T>::freeArray(void) {
 	if (_size)
 		delete [] _array;
-	_array = nullptr;
+	_array = NULL;
 }
 
 #endif

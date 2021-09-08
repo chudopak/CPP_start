@@ -40,17 +40,24 @@ int		main(void)
 
 	std::cout << "Assign arrays of int's" << std::endl;
 
-	Array<int> test_copy_int(TEST_SIZE);
+	Array<int> test_copy_int(TEST_SIZE + 1);
 	srand(time(NULL));
-	for (int i = 0; i < TEST_SIZE; i++) {
-		int	random = rand() % 100;
+	for (int i = 0; i < TEST_SIZE + 1; i++) {
+		int	random = rand() % 47;
 		test_copy_int[i] = random;
 	}
+	std::cout << "Vefore: [";
+	for (unsigned int i = 0; i < test_copy_int.size(); i++) {
+		std::cout << test_copy_int[i];
+		if (i + 1 != test_copy_int.size())
+			std::cout << ",";
+	}
+	std::cout << "]" << std::endl;
 	test_copy_int = test_int;
-	std::cout << "[";
-	for (unsigned int i = 0; i < test_int.size(); i++) {
-		std::cout << test_int[i];
-		if (i + 1 != test_int.size())
+	std::cout << "After: [";
+	for (unsigned int i = 0; i < test_copy_int.size(); i++) {
+		std::cout << test_copy_int[i];
+		if (i + 1 != test_copy_int.size())
 			std::cout << ",";
 	}
 	std::cout << "]" << std::endl;
