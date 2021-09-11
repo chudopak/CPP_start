@@ -6,6 +6,8 @@
 int main()
 {
 	std::vector<int> vector;
+
+	vector.reserve(4);
 	vector.push_back(14);
 	vector.push_back(2345);
 	vector.push_back(1);
