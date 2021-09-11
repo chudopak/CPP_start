@@ -5,22 +5,19 @@
 
 int main()
 {
-	std::vector<int> vec;
-	vec.push_back(11);
-	vec.push_back(12);
-	vec.push_back(13);
-	vec.push_back(9);
+	std::vector<int> vector;
+	vector.push_back(14);
+	vector.push_back(2345);
+	vector.push_back(1);
+	vector.push_back(69);
 
-	try
-	{
-		std::vector<int>::const_iterator res = easyFind(vec, 12);
+	try {
+		std::vector<int>::iterator res = easyFind(vector, 2345);
 		std::cout <<  *res << std::endl;
-		std::vector<int>::const_iterator wrong_res = easyFind(vec, 100);
+		std::vector<int>::iterator wrong_res = easyFind(vector, 68);
 		std::cout <<  *wrong_res << std::endl;
-	}
-	catch (std::exception& ex)
-	{
-		std::cout << "\033[31mError Find!\033[0m" << std::endl;
+	} catch (std::exception& ex) {
+		std::cout << "Can't Find!" << std::endl;
 	}
 
 	std::list<int> lis;
@@ -28,15 +25,14 @@ int main()
 	lis.push_back(12);
 	lis.push_back(13);
 	lis.push_back(9);
-	try
-	{
-		std::list<int>::const_iterator res = easyFind(lis, 9);
+
+	try {
+		std::list<int>::iterator res = easyFind(lis, 9);
 		std::cout <<  *res << std::endl;
-		std::list<int>::const_iterator wrong_res = easyFind(lis, 100);
+		std::list<int>::iterator wrong_res = easyFind(lis, 100);
 		std::cout <<  *wrong_res << std::endl;
+	} catch (std::exception& ex) {
+		std::cout << "Can't Find!" << std::endl;
 	}
-	catch (std::exception& ex)
-	{
-		std::cout << "\033[31mError Find!\033[0m" << std::endl;
-	}
+	return (0);
 }
