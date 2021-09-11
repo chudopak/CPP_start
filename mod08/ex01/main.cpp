@@ -1,32 +1,7 @@
 #include "span.hpp"
 
 int		main(void){
-	std::vector<int>	test;
 	srand(time(NULL));
-
-	test.reserve(20);
-	std::cout << test.size() << std::endl;
-	std::cout << test.capacity() << std::endl;
-	for (int i = 0; i < static_cast<int>(test.capacity()); i++) {
-		test.push_back(rand() % 100);
-	}
-
-	for (int i = 0; i < static_cast<int>(test.capacity()); i++) {
-		std::cout << test[i] << ' ';
-	}
-	std::cout << std::endl;
-
-	std::vector<int>::iterator	itb = test.begin();
-	std::vector<int>::iterator	ite = test.end();
-
-	std::sort(itb, ite);
-	for (int i = 0; i < static_cast<int>(test.capacity()); i++) {
-		std::cout << test[i] << ' ';
-	}
-	std::cout << std::endl;
-	std::cout << test.size() << std::endl;
-	std::cout << test.capacity() << std::endl;
-
 	Span span(5);
 
 	try {
